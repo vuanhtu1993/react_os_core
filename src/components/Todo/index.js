@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import TODO_ACTIONS from "../../modules/actions/todoAction";
+import TODO_ACTIONS from "../../redux/actions/todoAction";
 import { connect } from "react-redux";
 import {
   withStyles,
