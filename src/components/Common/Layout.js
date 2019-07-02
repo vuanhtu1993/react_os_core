@@ -1,5 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
+import PropTypes from 'prop-types'
+
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -8,8 +10,8 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import ListMenu from './ListMenu'
+import Container from '@material-ui/core/Container'
 
 import Drawer from './Drawer'
 
@@ -94,16 +96,22 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Layout() {
+export default function Layout(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const {children, ...rest} = props
+
+  console.log(rest);
 
   return (
     <div className={classes.root}>
@@ -128,7 +136,16 @@ export default function Layout() {
       {/*Menu left*/}
       <Drawer handleDrawerClose={handleDrawerClose} open={open}/>
       {/*Main Content*/}
+      <main className={classes.content}>
+        <div className={classes.appBarSpacer} />
+        <Container maxWidth="lg" className={classes.container}>
+          {children}
+        </Container>
+      </main>
     </div>
   );
 }
 
+Layout.propTypes = {
+
+}

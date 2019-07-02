@@ -13,7 +13,9 @@ const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 function App() {
   return (
     <Provider store={reduxStore}>
-      <Layout/>
+      <Layout>
+        <TodoComponent/>
+      </Layout>
     </Provider>
   );
 }
