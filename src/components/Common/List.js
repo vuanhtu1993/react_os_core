@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles';
 import ListSubheader from '@material-ui/core/ListSubheader';
@@ -37,24 +38,19 @@ export default function CustomizeList() {
     <List
       component="nav"
       aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Nested List Items
-        </ListSubheader>
-      }
       className={classes.root}
     >
-      <ListItem button>
+      <ListItem button component={Link} to="/todo">
         <ListItemIcon>
           <SendIcon />
         </ListItemIcon>
-        <ListItemText primary="Sent mail" />
+        <ListItemText primary="Todo list"/>
       </ListItem>
-      <ListItem button>
+      <ListItem button component={Link} to="/table">
         <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>
-        <ListItemText primary="Drafts" />
+        <ListItemText primary="Table"/>
       </ListItem>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
