@@ -21,9 +21,10 @@ const retry = (fn, retriesLeft = 1, interval = 1000) => {
         }, interval)
       })
   })
-}
+};
 // Lazy load component
-const TodoComponent = lazy(() => retry(() => import('./components/Todo')))
+const UserInformation = lazy(() => import('./routes/user_management/user_information'));
+const CreateAccount = lazy(() => import('./routes/user_management/create_account'));
 
 // Store
 const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
@@ -31,20 +32,24 @@ const reduxStore = configureStore(window.REDUX_INITIAL_DATA);
 function App() {
   return (
     <Provider store={reduxStore}>
-      <Layout>
-        <Suspense fallback={<h4>...Loading</h4>}>
-          <Switch>
-            <Route exact path="/" component={() => <h1>Dashboard</h1>} />
-            <Route path="/todo" component={TodoComponent} />
-          </Switch>
-        </Suspense>
-      </Layout>
+      <Switch>
+        <Route path='/login' component={() => <h1>Login</h1>}/>
+        <Layout>
+          <Suspense fallback={<h4>...Loading</h4>}>
+            <Switch>
+              <Route exact path="/" component={() => <h1>Dashboard</h1>} />
+              <Route exact path="/user" component={UserInformation} />
+              <Route path="/user/account" component={CreateAccount} />
+            </Switch>
+          </Suspense>
+        </Layout>
+      </Switch>
     </Provider>
   );
 }
 
 // Global router
-window.globalRouter = null
+window.globalRouter = null;
 export default () => (
   <Router ref={(node) => window.globalRouter = node}>
     <App />

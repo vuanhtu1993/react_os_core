@@ -29,6 +29,9 @@ const useStyles = theme => ({
   },
   icon: {
     color: theme.palette.primary.main
+  },
+  itemIcon: {
+
   }
 });
 
