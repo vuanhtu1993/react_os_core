@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
-import ListMenu from './ListMenu'
+import UserMenu from './UserMenu'
 import Container from '@material-ui/core/Container'
 
 // Component
@@ -152,7 +152,8 @@ export default function Layout(props) {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             {typo.dashboard_title}
           </Typography>
-          <ListMenu />
+          {/*User icon*/}
+          <UserMenu />
         </Toolbar>
       </AppBar>
       {/*Menu left*/}
