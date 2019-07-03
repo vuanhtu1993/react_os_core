@@ -43,8 +43,10 @@ function App() {
   );
 }
 
+// Global router
+window.globalRouter = null
 export default () => (
-  <Router>
+  <Router ref={(node) => window.globalRouter = node}>
     <App />
   </Router>
 );

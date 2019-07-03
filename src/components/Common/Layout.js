@@ -1,8 +1,10 @@
 import React from 'react';
 import clsx from 'clsx';
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import {makeStyles} from '@material-ui/core/styles';
+// Material UI
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,6 +15,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ListMenu from './ListMenu'
 import Container from '@material-ui/core/Container'
 
+// Component
 import Drawer from './Drawer'
 
 const drawerWidth = 240;
@@ -96,11 +99,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+/**
+ * * Styled Components
+ */
+const Logo = styled.img`
+
+`
+
 export default function Layout(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
-    setOpen(true);
+    setOpen(!open);
   };
 
   const handleDrawerClose = () => {
@@ -109,32 +119,31 @@ export default function Layout(props) {
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
-  const {children, ...rest} = props
-
-  console.log(rest);
+  const { children, ...rest } = props
 
   return (
     <div className={classes.root}>
-      <CssBaseline/>
-      <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
+      <CssBaseline />
+      <AppBar position="absolute" className={clsx(classes.appBar)}>
         <Toolbar className={classes.toolbar}>
+          <Logo src={require('../../assets/images/cirensoft.png')} />
           <IconButton
             edge="start"
             color="inherit"
             aria-label="Open drawer"
             onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton, open && classes.menuButtonHidden)}
+            className={clsx(classes.menuButton)}
           >
-            <MenuIcon/>
+            <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             Dashboard
           </Typography>
-          <ListMenu/>
+          <ListMenu />
         </Toolbar>
       </AppBar>
       {/*Menu left*/}
-      <Drawer handleDrawerClose={handleDrawerClose} open={open}/>
+      <Drawer handleDrawerClose={handleDrawerClose} open={open} />
       {/*Main Content*/}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
