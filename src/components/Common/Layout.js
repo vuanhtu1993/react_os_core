@@ -18,6 +18,9 @@ import Container from '@material-ui/core/Container'
 // Component
 import Drawer from './Drawer'
 
+// Dictionaries
+import typo from '../../constants/dictionaries'
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -50,13 +53,14 @@ const useStyles = makeStyles(theme => ({
     }),
   },
   menuButton: {
-    marginRight: 36,
+    // marginRight: 36,
   },
   menuButtonHidden: {
     display: 'none',
   },
   title: {
     flexGrow: 1,
+    marginLeft: 20
   },
   drawerPaper: {
     position: 'relative',
@@ -85,8 +89,7 @@ const useStyles = makeStyles(theme => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
+    padding: theme.spacing(2)
   },
   paper: {
     padding: theme.spacing(2),
@@ -103,7 +106,15 @@ const useStyles = makeStyles(theme => ({
  * * Styled Components
  */
 const Logo = styled.img`
+  width: 100px;
+  height: auto;
+`
 
+const Wrapper = styled.div`
+  display: flex;
+  width: 194px;
+  justify-content: space-between;
+  align-items: center;
 `
 
 export default function Layout(props) {
@@ -126,18 +137,20 @@ export default function Layout(props) {
       <CssBaseline />
       <AppBar position="absolute" className={clsx(classes.appBar)}>
         <Toolbar className={classes.toolbar}>
-          <Logo src={require('../../assets/images/cirensoft.png')} />
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="Open drawer"
-            onClick={handleDrawerOpen}
-            className={clsx(classes.menuButton)}
-          >
-            <MenuIcon />
-          </IconButton>
+          <Wrapper>
+            <Logo src={require('../../assets/images/cirensoft.png')} />
+            <IconButton
+              edge="start"
+              color="inherit"
+              aria-label="Open drawer"
+              onClick={handleDrawerOpen}
+              className={clsx(classes.menuButton)}
+            >
+              <MenuIcon />
+            </IconButton>
+          </Wrapper>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-            Dashboard
+            {typo.dashboard_title}
           </Typography>
           <ListMenu />
         </Toolbar>
@@ -147,7 +160,7 @@ export default function Layout(props) {
       {/*Main Content*/}
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
+        <Container maxWidth="xl" className={classes.container}>
           {children}
         </Container>
       </main>

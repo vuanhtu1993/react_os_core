@@ -11,14 +11,29 @@ const theme = createMuiTheme({
       main: '#fff',
     },
     secondary: {
-      main: '#73818f',
+      main: '#2f353a',
     },
     error: {
-      main: red.A400,
+      main: '#f86c6b',
+    },
+    warning: {
+      main: '#ffc107'
+    },
+    success: {
+      main: '#4dbd74'
+    },
+    info: {
+      main: '#63c2de'
     },
     background: {
       default: '#fff',
     },
+    dark: {
+      main: '#2f353a',
+    },
+    light: {
+      main: '#f0f3f5',
+    }
     // blue: '#20a8d8',
     // indigo: '#6610f2',
     // purple: '#6f42c1',

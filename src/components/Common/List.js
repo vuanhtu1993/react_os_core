@@ -19,11 +19,14 @@ const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    backgroundColor: theme.palette.background.paper,
+    color: theme.palette.primary.main
   },
   nested: {
     paddingLeft: theme.spacing(4),
   },
+  icon: {
+    color: theme.palette.primary.main
+  }
 }));
 
 export default function CustomizeList() {
@@ -42,19 +45,19 @@ export default function CustomizeList() {
     >
       <ListItem button component={Link} to="/todo">
         <ListItemIcon>
-          <SendIcon />
+          <SendIcon className={classes.icon}/>
         </ListItemIcon>
         <ListItemText primary="Todo list"/>
       </ListItem>
       <ListItem button component={Link} to="/table">
         <ListItemIcon>
-          <DraftsIcon />
+          <DraftsIcon className={classes.icon}/>
         </ListItemIcon>
         <ListItemText primary="Table"/>
       </ListItem>
       <ListItem button onClick={handleClick}>
         <ListItemIcon>
-          <InboxIcon />
+          <InboxIcon className={classes.icon}/>
         </ListItemIcon>
         <ListItemText primary="Inbox" />
         {open ? <ExpandLess /> : <ExpandMore />}
@@ -63,7 +66,7 @@ export default function CustomizeList() {
         <List component="div" disablePadding>
           <ListItem button className={classes.nested}>
             <ListItemIcon>
-              <StarBorder />
+              <StarBorder className={classes.icon}/>
             </ListItemIcon>
             <ListItemText primary="Starred" />
           </ListItem>
